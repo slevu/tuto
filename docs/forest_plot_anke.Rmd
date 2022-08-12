@@ -1,0 +1,93 @@
+---
+title: "Faire un forest plot pour Anke"
+date: "12/08/22"
+output:
+  html_document:
+    code_folding: hide
+    keep_md: no
+    number_sections: no
+    toc: yes
+    toc_float: no
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 3)
+knitr::opts_knit$set(root.dir = '../')
+```
+
+```{r read}
+knitr::read_chunk("R/plot_effect_size.R")
+```
+
+```{r libs, warning = FALSE}
+
+```
+
+J'utilise les package `ggplot2` pour générer les figures et les tableaux, `reshape2` pour passer d'une table en largeur à une table en longueur (équivalent de la fonction de base `reshape`), et `cowplot` pour combiner les objets graphiques.
+
+Mon programme est en général fait de fonctions (équivalentes aux macros SAS) que je peux réutiliser sans dupliquer le code.
+
+### Figure de base
+Je commence par simuler des données. La façon dont c'est fait n'a pas d'importance. Seule la forme des données est importante. On a un table contenant des nombres de sujets (`events`) et des estimateurs centraux (ici risque relatif) et leur IC95% (`rr_ci`) pour des variables A, B, C, etc. :
+
+```{r fake data}
+
+```
+
+Je trace la figure des estimations + IC95%, qui ressemble à ça :
+
+```{r plot}
+
+```
+
+```{r show plot, fig.width = 3, fig.height = 2}
+p0
+```
+
+Séparément, je construis un tableau pour accompagner la figure, qui lui même est un objet graphique. Le tableau peut contenir un nombre arbitraire de colonnes. Il ressemble à ça :
+
+```{r table}
+
+```
+
+```{r show table, fig.width = 3, fig.height = 2}
+d0
+```
+
+Et je combine les deux dans une même figure.
+
+```{r join, warning = FALSE}
+
+```
+
+```{r show plot1, fig.width = 5, fig.height = 2}
+plot1
+```
+
+### Exemple avec groupes de "variables"
+Pour regrouper les variables sous un label, je reformate la table de départ. Encore une fois la manipulation n'est pas importante, il faut juste comprendre la forme de la nouvelle table. Seule la colonne `var` a été modifiée par les nouvelles lignes, le reste est manquant.
+
+```{r add group, warning = FALSE}
+
+```
+
+```{r show d2}
+d2
+```
+
+`ggplot` ignore les données manquantes et j'obtiens ça :
+
+```{r, fig.width = 5, fig.height = 2.5, warning = FALSE}
+plot2
+```
+
+### Exemple pour deux "modèles"
+
+Je commence par générer une deuxième figure basique, puis je la combine avec la première en ajoutant des titres.
+
+```{r by model, fig.width = 5, fig.height = 5, warning = FALSE}
+
+```
+
+
