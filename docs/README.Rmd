@@ -1,5 +1,6 @@
 ---
-title: "Faire un forest plot pour Anke"
+title: "Faire un forest plot"
+author: "Stéphane Le Vu"
 date: "16/08/22"
 output: github_document
 ---
