@@ -1,0 +1,18 @@
+---
+title: "blobbo"
+output: html_document
+date: "2023-10-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- simuler données avec liste d'études
+- forest plot
+- ajouter un groupe (sex)
+- échelle log
+- limites, flèches
+- taille des effects size
+- couleur
+- deux groupes (sex, age)
